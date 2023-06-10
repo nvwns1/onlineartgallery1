@@ -1,10 +1,46 @@
-<?php include "header.php"; ?>
+<?php include "header.php"; 
+  // session_start();
+  if (!$_SESSION['loggedIn']) {
+    header("location:login.php");
+  }
+
+  include("./partials/db.php");
+
+
+
+  $username = $_SESSION['username'];
+  $fname = $_SESSION['fname'];
+  $lname = $_SESSION['lname'];
+  $email = $_SESSION['email'];
+
+  if(!isset($userid)){
+    $idQ = "SELECT id from users WHERE username='$username'";
+    $result = mysqli_query($conn, $idQ);
+    if($result){
+      if(mysqli_num_rows($result)>0){
+        $row = mysqli_fetch_assoc($result);
+        $id= $row['id'];
+        $_SESSION['id']=$id;
+      }
+    }
+  }
+
+  ?>
     <main>
       <section class="hero">
         <div class="hero-text">
+        <!-- <h1>ID <?php echo"$id";?>
+
+          <h1>Hello <?php echo"$username";?>
+          <h1>fname: <?php echo"$fname";?>
+          <h1>lname: <?php echo"$lname";?>
+
+          <h1>email: <?php echo"$email";?> -->
+
           <h2>Welcome to Art Gallery</h2>
+
           <p>Discover the beauty of art and the power of expression in our online gallery.</p>
-          <a href="#" class="btn">View Gallery</a>
+          <a href="user.php" class="btn">Explore Profile</a>
         </div>
         <div class="hero-image">
           <img src="https://i.pinimg.com/564x/37/0f/d6/370fd62bc86ec772653ef85a624f6553.jpg" alt="Artwork">

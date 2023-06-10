@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- <title>Art Gallery Homepage</title> -->
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <h1>Art Gallery</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="artist.php">Artists</a></li>
-          <li><a href="exhibition.php">Exhibitions</a></li>
-          <li><a href="events.php">Events</a></li>
-          <li><a href="contact.php">Contact</a></li>
-          <li><a href="signupForm.php">Signup</a></li>
-          <li><a href="loginForm.php" class="login">Login</a></li>
-        </ul>
-      </nav>
-    </header>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <h1>Online Art Gallery</h1>
+    </div>
+    <nav>
+      <ul>
+        <?php
+        if (session_status() == PHP_SESSION_NONE) {
+          session_start();
+        }
+
+        if (isset($_SESSION['loggedIn'])) {
+          $username = $_SESSION['username'];
+          $userURL = "$username";
+          echo '<li><a href="index.php">Home</a></li>';
+          echo '<li><a href="artist.php">Artist</a></li>';
+          echo '<li><a href="artwork.php">Artwork</a></li>';
+          echo '<li><a href="' . $userURL . '">' . $username . '</a></li>';
+          echo '<li><a href="partials/logout.php">Log Out</a></li>';
+        } else {
+          echo '<li><a href="about.php">About Us</a></li>';
+          echo '<li><a href="artist.php">Artist</a></li>';
+          echo '<li><a href="artwork.php">Artwork</a></li>';
+          echo '<li><a href="signupForm.php">Sign Up</a></li>';
+          echo '<li><a href="login.php" class="login">Log In</a></li>';
+        }
+        ?>
+
+
+      </ul>
+    </nav>
+  </header>

@@ -38,6 +38,11 @@
 				<p>Artist Name</p>
 			</div>
 			<div>
+				<img src="https://i.pinimg.com/564x/37/0f/d6/370fd62bc86ec772653ef85a624f6553.jpg" alt="Artwork 1">
+				<h2>Artwork Title</h2>
+				<p>Artist Name</p>
+			</div>
+			<div>
 			<img src="https://i.pinimg.com/564x/37/0f/d6/370fd62bc86ec772653ef85a624f6553.jpg" alt="Artwork 2">
 				<h2>Artwork Title</h2>
 				<p>Artist Name</p>

@@ -1,7 +1,8 @@
 <?php 
-session_start();
+ include "header.php"; 
+
 if(isset($_SESSION['loggedIn'])){
-  header("locatioin:./index.php");
+  header("location: index.php");
   exit();
 }
 
@@ -9,16 +10,16 @@ $exist= false;
 $didMatch = false;
 $empty = false;
 
- include "header.php"; 
- 
-include "partials/db.php";
+include "./partials/db.php";
  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
   $username = $_POST['username'];
+
   $email = $_POST['email'];
   $password = $_POST['password'];
   $status = 'active';
+  $pp = 'profile.png';
 
   $usernameCheck = "SELECT * FROM `users` WHERE `username`='$username'";
   $resOfCheck = mysqli_query($conn, $usernameCheck);
@@ -26,40 +27,32 @@ include "partials/db.php";
   if($numOfUserName >0){
     $exist = true;
   }else{
-    if ($fname==""||$lname=""||$username==""||$password==""||$email=""){
+    if ($fname==""||$lname==""||$username==""||$password==""||$email==""){
       $empty = true;
     }else if(($password != "") && ($exist == false)) {
       $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-      $q= "INSERT INTO `users`(`fname`, `lname`, `username`,
-      `email`, `password`, `status`) 
-      VALUES ('$fname','$lname','$username',
-      '$email','$passwordHash','$status')";
-      $result1 = mysqli_query($conn, $q);
+      $q = "INSERT INTO `users`(`fname`, `lname`, `username`, `email`, `password`, `status`,`pp`)
+       VALUES ('$fname', '$lname', '$username', '$email', '$passwordHash', '$status','$pp')";
 
-      // $serializedArray = serialize(array());
-      // $sql = "INSERT INTO `userfollowfollowing` (`username`, `follow`, `following`) VALUES ('$username', '$serializedArray', '$serializedArray')";
-      // $result2 = mysqli_query($con, $sql);
+      $result1 = mysqli_query($conn, $q);
+      
       if ($result1 || $result2) {
-        header("location:./dashboard.php");
+        $_SESSION['loggedIn'] = true;
+
+        $_SESSION['fname']=$fname;
+        $_SESSION['lname']=$lname;
+
+        $_SESSION['username']=$username;
+        $_SESSION['email']=$email;
+        $_SESSION['pp'] = $pp;
+        header("location: index.php");
+        exit();
       }
   }}
 }
   
 ?>
-
-  <!-- // $result = mysqli_query($conn, $q);
-  // sleep(1);
-  // echo "success";
-//   if(mysqli_query($conn,$q)){
-//     header("Location: dashboard.php");
-//     exit();
-//   }else{
-//     $error = "Error: " .mysqli_error($conn);
-//   }
-  
- 
-//  } -->
 
 
 
@@ -74,6 +67,9 @@ include "partials/db.php";
   <?php } ?>
   <form method="post">
    <h2> Sign Up</h2>
+    
+
+
     <br>
   <label>First Name:</label>
     <input type="text" name="fname">
@@ -85,12 +81,14 @@ include "partials/db.php";
     <input type="text" name="username">
     <br>
     <label>Email:</label>
-    <input type="text" name="email">
+    <input type="email" name="email">
     <br>
     <label>Password:</label>
     <input type="text" name="password">
     <br>
     <input type="submit" value="Sign Up">
   </form>
+<?php include "footer.php"; ?>
+
 </body>
 </html>
