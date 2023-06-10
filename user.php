@@ -7,6 +7,7 @@ $fname = $_SESSION['fname'];
 $lname = $_SESSION['lname'];
 $email = $_SESSION['email'];
 
+
 if (!isset($pp)) {
   $ppQ = "SELECT pp FROM users Where id='$id'";
   $result = mysqli_query($conn, $ppQ);
@@ -25,97 +26,45 @@ if (!isset($pp)) {
 
 <head>
   <title>User Profile</title>
-  <link rel="stylesheet" type="text/css" href="artistPage.css">
-
 </head>
-<style>
-    
-    .artist-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.artist-card {
-    flex-basis: calc(33.33% - 20px);
-    margin: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
-
-.artist-card img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    margin-bottom: 20px;
-}
-.artist-card h2 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-
-.artist-card p {
-    margin: 0;
-    color: #666;
-    text-align: center;
-    font-size: 14px;
-    }
-    .link-container {
-            display: flex;
-            gap: 10px;
-        }
-
-        .edit-link{
-            padding: 5px 10px;
-            background-color: #eee;
-            text-decoration: none;
-            color: #333;
-        }
-        .delete-link {
-            padding: 5px 10px;
-            background-color: red;
-            text-decoration: none;
-            color: #fff;
-        }
-</style>
 
 <body>
 
-  <div class="container">
-    <div class="artist-bio">
-      <div class="artist-image">
-        <img src="./photo/<?php echo $pp ?>" alt="Artist Name">
-      </div>
-      <div class="artist-info">
-
-        <h2 class="artist-name"><?php echo "$fname" . " " . "$lname"; ?></h2>
-        <form method="POST" action="ppupload.php" enctype="multipart/form-data">
-          <input type="file" name="profilePicture">
-          <input type="submit" value="Change Profile Picture">
-
-        </form>
-      <nav>
-      <a style="color: #fff; background-color:#333; width: 200px;" href="./addArtwork.php">Add artwork</a> 
-
-      </nav>
-     
-      </div>
+<div class="profile-container">
+  <div class="artist-bio">
+    <div class="artist-image">
+      <img src="./photo/<?php echo $pp ?>" alt="Artist Name">
     </div>
+    <div class="artist-info">
+      <h2 class="artist-name"><?php echo "$fname" . " " . "$lname"; ?></h2>
+      <h2 class="artist-name"><?php echo "$email"; ?></h2>
 
+      <form class="a" method="POST" action="ppupload.php" enctype="multipart/form-data">
+        <input type="file" name="profilePicture">
+        <input type="submit" value="Change Profile Picture">
+      </form>
+      <br>
+      <a href="edit_artist.php?id= <?php echo $id ?>" class="profile-link">Edit Profile</a> 
+      <br>
+      <a href="./addArtwork.php" class="profile-link">Add Artwork</a> 
+    </div>
+  </div>
+</div>
+
+
+
+    <section class="line">
+    <h2>Gallery</h2>
+    </section>
 
 
     <div class="artist-container">
+
       <?php
       $query = "Select * FROM artworks WHERE artist_id = $id";
       $result = mysqli_query($conn, $query);
       if ($result  && mysqli_num_rows($result) > 0) {
+
         while ($row = mysqli_fetch_assoc($result)) {
           $id=$row['artwork_id'];
           $uname = $_SESSION['username'];

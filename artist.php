@@ -1,59 +1,19 @@
 <?php include "header.php"; 
 include "partials/db.php"?>
 
-<style>
-    .artist-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.artist-card {
-    flex-basis: calc(33.33% - 20px);
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    transition: transform 0.3s ease;
-}
-
-.artist-card img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-.artist-card h2 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-
-.artist-card p {
-    margin: 0;
-    color: #666;
-    text-align: center;
-    font-size: 14px;
-}
-</style>
-
 
 <section class="hero">
   <div class="hero-text">
     <h2>Featured artist.</h2>
     <p>Where creativity knows no bounds, and imagination takes flight.</p>
   </div>
-  <div class="about-image">
-    <img src="img/artist.jpg" height='600px' alt="about">
+  <div class="hero-image">
+    <img src="img/artist.jpg" alt="about">
   </div>
 </section>
-
+<section class="line">
+    <h2>Artist</h2>
+    </section>
 
 
 <div class="artist-container">

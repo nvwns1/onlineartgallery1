@@ -9,8 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $artist_id = $id;
     $description = $_POST['description'];
-    $creation_date = time();
-
     // Handle the uploaded image
     $image = $_FILES['image'];
     $image_name = $image['name'];
@@ -21,17 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     move_uploaded_file($image_tmp, $image_path);
 
     // Insert the data into the Artworks table
-    $query = "INSERT INTO Artworks (title, artist_id, description, image_path, creation_date) 
-              VALUES ('$title', '$artist_id', '$description', '$image_path', '$creation_date')";
-    
-    if (mysqli_query($conn, $query)) {
-        // Data inserted successfully
-        echo "Artwork added successfully!";
-        header("location: user.php");
-    } else {
-        // Error inserting data
-        echo "Error: " . mysqli_error($conn);
-    }
+
+    $query = "INSERT INTO artworks (title, artist_id, description, image_path) 
+    VALUES (?, ?, ?, ?)";
+
+  $stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_bind_param($stmt, "siss", $title, $artist_id, $description, $image_path);
+
+if (mysqli_stmt_execute($stmt)) {
+echo "Artwork added successfully!";
+header("location: user.php");
+} else {
+echo "Error: " . mysqli_stmt_error($stmt);
+}
+
+mysqli_stmt_close($stmt);
+
 }
 ?>
 
@@ -40,9 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <input type="text" name="title" required>
   <br>
 
-  <!-- <label>Artist ID:</label>
-  <input type="number" name="artist_id" required>
-  <br> -->
 
   <label>Description:</label>
   <textarea name="description"></textarea>
@@ -51,13 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <label>Image:</label>
   <input type="file" name="image" accept="image/*" required>
   <br>
-
-  <!-- <label>Price:</label>
-  <input type="number" name="price" step="0.01" required>
-  <br> -->
-<!-- 
-  <label>Creation Date:</label>
-  <input type="date" name="creation_date" required> -->
   <br>
 
   <input type="submit" value="Add Artwork">

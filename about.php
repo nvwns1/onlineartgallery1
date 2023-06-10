@@ -13,8 +13,8 @@ include 'header.php';
           <a href="login.php" class="btn">Log In</a>
           
         </div>
-        <div class="about-image">
-          <img src="img/about.jpg" height='700px' alt="about">
+        <div class="hero-image">
+          <img src="img/about.jpg" alt="about">
         </div>
       </section>
 <?php include 'footer.php';?>

@@ -7,7 +7,7 @@ $email ="";
 
 $error = "";
 $success = "";
-include("admin.php");
+include("header.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if(!isset($_GET['id'])){
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
     while(!$row){
-        header("location: allartist.php");
+        header("location: index.php");
         exit();
     }
 
@@ -31,21 +31,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $lname=$row["lname"];
     $email=$row["email"];
     $status = $row["status"];
-    $activeChecked = ($status === "active") ? "checked" : "";
-    $suspendChecked = ($status === "suspend") ? "checked" : "";
 }else{
     $id = $_POST['id'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
-    $status = $_POST['status'];
 
     $query = "update users set fname = '$fname', lname= '$lname',
      email = '$email', status = '$status'
      where id=$id";
     $result = $conn->query($query);
     if ($result){
-        header("location: allartist.php");
+        $_SESSION['fname'] = $fname;
+        $_SESSION['lname']= $lname;
+        $_SESSION['email']= $email;
+        header("location: user.php");
         exit();
     }else{
         $error ="Unable to Edit";
@@ -64,18 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <br>
     <label>Email:</label>
     <input type="text" name="email"  value="<?php echo $email; ?>" >
-    <br>
-    <label>Status:</label>
-    <br>
-    <input type="radio" id="activeRadio" name="status" value="active" <?php echo $activeChecked; ?>>
-    <label for="activeRadio">Active</label>
-
-    <input type="radio" id="suspendRadio" name="status" value="suspend" <?php echo $suspendChecked; ?>>
-    <label for="suspendRadio">Suspend</label>
     
     <br>
     <br>
-    <input type="submit" value="Edit Artist">
+    <input type="submit" value="Submit">
 
 
 </form>

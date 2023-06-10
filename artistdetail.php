@@ -18,38 +18,6 @@ $row = mysqli_fetch_assoc($result);
     <title>Artwork</title>
 </head>
 
-<style>
-  .artist-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.artist-card {
-    flex-basis: calc(33.33% - 20px);
-    margin: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
-
-.artist-card img {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 0%;
-    margin-bottom: 20px;
-}
-.artist-card h2 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            color: #333;
-            margin-bottom: 10px;
-        }
-</style>
 <body>
 <section class="hero">
         <div class="hero-text">
@@ -60,6 +28,9 @@ $row = mysqli_fetch_assoc($result);
         </div>
       </section>
  
+      <section class="line">
+        <h2><?php echo $row['fname']?>'s Gallery</h2>
+      </section>
 <div class="artist-container">
     <?php
     while ($row = mysqli_fetch_assoc($result)) {
