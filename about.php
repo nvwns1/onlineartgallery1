@@ -2,6 +2,14 @@
 include 'header.php';
 
 ?>
+<head>
+  <style>
+    footer{
+      position: fixed;
+      bottom: 0px;
+    }
+  </style>
+</head>
 <section class="hero">
         <div class="hero-text">
           <h2>Welcome to Online Art Gallery</h2>

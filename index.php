@@ -1,4 +1,5 @@
-<?php include "header.php";
+<?php
+include "header.php";
 if (!$_SESSION['loggedIn']) {
   header("location:login.php");
 }
@@ -11,7 +12,12 @@ $username = $_SESSION['username'];
 $fname = $_SESSION['fname'];
 $lname = $_SESSION['lname'];
 $email = $_SESSION['email'];
+$status = $_SESSION['status'];
 
+if($status=="suspend"){
+  header("location: suspend.php");
+  exit();
+}
 if (!isset($userid)) {
   $idQ = "SELECT id from users WHERE username='$username'";
   $result = mysqli_query($conn, $idQ);

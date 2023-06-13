@@ -60,6 +60,12 @@ include "./partials/db.php";
 <html>
 <head>
   <title>Signup</title>
+  <style>
+    footer{
+      position: fixed;
+      bottom: 0px;
+    }
+  </style>
 </head>
 <body>
   <?php if (isset($error)) { ?>
@@ -84,7 +90,7 @@ include "./partials/db.php";
     <input type="email" name="email">
     <br>
     <label>Password:</label>
-    <input type="text" name="password">
+    <input type="password" name="password">
     <br>
     <input type="submit" value="Sign Up">
   </form>

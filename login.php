@@ -50,7 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include "header.php";
 
 ?>
-
+<head>
+  <style>
+    footer{
+      position: fixed;
+      bottom: 0px;
+    }
+  </style>
+</head>
 <body>
 
 
@@ -61,22 +68,25 @@ include "header.php";
     echo "<div>Username and Password doesnot match.</div>";
   }
   ?>
+  <div class= "menu">
   <form method="post" action="#" id="loginForm">
     <label>Username:</label>
     <input type="text" name="username" id="name1" required>
     <br>
     <label>Password:</label>
-    <input type="text" name="password" id="pass" required>
+    <input type="password" name="password" id="pass" required>
     <br>
     <input type="submit" value="Login" name="submit">
   </form>
+<?php include "footer.php"; ?>
+
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>
 </body>
-<?php include "footer.php"; ?>
 
 
 </html>

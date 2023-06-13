@@ -2,6 +2,12 @@
     box-sizing: border-box;
   }
   
+  .menu{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 2000px;
+  }
   body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -239,6 +245,7 @@ nav li:last-child {
 
   input[type="text"],
   input[type="email"],
+  input[type="password"],
   textarea {
     display: block;
     margin-bottom: 20px;
@@ -272,6 +279,9 @@ nav li:last-child {
     color: #fff;
     text-align: center;
     padding: 20px;
+    /* position: fixed; */
+    /* bottom: 0px; */
+    margin-top: 50px;
   }
 
 

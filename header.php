@@ -20,8 +20,10 @@
         if (isset($_SESSION['loggedIn'])) {
           $username = $_SESSION['username'];
           $userURL = "$username";
+           
           echo '<li><a href="index.php">Home</a></li>';
           echo '<li><a href="artist.php">Artist</a></li>';
+            
           echo '<li><a href="artwork.php">Artwork</a></li>';
           echo '<li><a href="' . $userURL . '">' . $username . '</a></li>';
           echo '<li><a href="partials/logout.php">Log Out</a></li>';
