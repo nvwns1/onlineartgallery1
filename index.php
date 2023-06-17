@@ -14,6 +14,7 @@ $lname = $_SESSION['lname'];
 $email = $_SESSION['email'];
 $status = $_SESSION['status'];
 
+
 if($status=="suspend"){
   header("location: suspend.php");
   exit();

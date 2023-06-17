@@ -2,6 +2,8 @@
 include 'admin.php';
 include 'partials/db.php';
 
+echo '<h2 class="hero-text">All Artwork</h2>';
+
 $query = "SELECT users.username,
 artworks.artwork_id,
 artworks.title,

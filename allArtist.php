@@ -1,6 +1,16 @@
+    <head>
+        <style>
+            .artist-card{
+                cursor: default;
+            }
+        </style>
+    </head>
     <?php
     include 'admin.php';
     include 'partials/db.php';
+
+    echo '<h2 class="hero-text">All Artist</h2>';
+    
 
     $query = "Select * From users where username != 'admin'";
     $result = mysqli_query($conn, $query);
@@ -11,7 +21,7 @@
             $id = $row['id'];
         echo '<div class="artist-card">';
         echo '<img src="photo/' . $row['pp'] . '">';
-        echo '<h2>' . $row['fname'] . ' ' . $row['fname'] .  '</h2>';
+        echo '<h2>' . $row['fname'] . ' ' . $row['lname'] .  '</h2>';
         echo '<p>Email: ' . $row['email'] . '</p>';
         echo '<p>Username: ' . $row['username'] . '</p>';
         echo '<p>Status: ' . $row['status'] . '</p>';

@@ -3,6 +3,8 @@ include("partials/db.php");
 $id = "";
 $title = "";
 $description = "";
+$price ="";
+$unit ="";
 
 $error = "";
 $success = "";
@@ -26,12 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $title=$row["title"];
     $description = $row["description"];
+    $price = $row["price"];
+    $unit = $row["units_available"];
+
 }else{
     $artwork_id = $_POST['id'];
     $title = $_POST['title'];
     $description = $_POST['description'];
+    $price = $POST["price"];
+    $unit = $POST["unit"];
 
-    $query = "update artworks set title = '$title', description= '$description' where artwork_id=$artwork_id";
+    $query = "update artworks set title = '$title', description= '$description', price= '$price', units_available = '$unit'
+     where artwork_id=$artwork_id";
     $result = $conn->query($query);
     if ($result){
         header("location: index.php");
@@ -53,5 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <label>Description:</label>
     <textarea name="description"><?php echo $description; ?></textarea>
     <br>
+    <label>Price:</label>
+    <input type="number" name="price"  value="<?php echo $price; ?>" >
+    <br>
+    <label>Unit Available:</label>
+    <input type="number" name="unit"  value="<?php echo $unit; ?>" >
+    <br>
+
     <input type="submit" value="Edit Artwork">
 </form>

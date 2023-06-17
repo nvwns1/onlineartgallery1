@@ -245,6 +245,8 @@ nav li:last-child {
 
   input[type="text"],
   input[type="email"],
+  input[type="number"],
+
   input[type="password"],
   textarea {
     display: block;
@@ -296,23 +298,7 @@ nav li:last-child {
   }
 
 
-    .link-container {
-            display: flex;
-            gap: 10px;
-        }
 
-        .edit-link{
-            padding: 5px 10px;
-            background-color: #eee;
-            text-decoration: none;
-            color: #333;
-        }
-        .delete-link {
-            padding: 5px 10px;
-            background-color: red;
-            text-decoration: none;
-            color: #fff;
-        }
 
 
 /*artist conntainer**/
@@ -395,4 +381,26 @@ nav li:last-child {
   text-align: center;
   text-decoration: none;
   margin-bottom: 10px;
+}
+
+
+.link-container {
+  display: flex;
+  gap: 10px;
+  /* color: #eee; */
+}
+
+.edit-link {
+  padding: 5px 10px;
+  background-color: #eee;
+  text-decoration: none;
+  color: #333;
+}
+.delete-link {
+  padding: 5px 10px;
+  background-color: red;
+  text-decoration: none;
+  color: #fff;
+  text-decoration-color: #eee;
+
 }

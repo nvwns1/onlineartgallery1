@@ -9,6 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $artist_id = $id;
     $description = $_POST['description'];
+    $price = $_POST['price'];
+    $unit = $_POST['unit'];
+
     // Handle the uploaded image
     $image = $_FILES['image'];
     $image_name = $image['name'];
@@ -20,11 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insert the data into the Artworks table
 
-    $query = "INSERT INTO artworks (title, artist_id, description, image_path) 
-    VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO artworks (title, artist_id, description,
+    price, units_available,
+     image_path) 
+    VALUES (?, ?, ?, ?, ?, ?)";
 
   $stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "siss", $title, $artist_id, $description, $image_path);
+mysqli_stmt_bind_param($stmt, "sissis", $title, $artist_id, $description,
+  $price, $unit,
+$image_path);
 
 if (mysqli_stmt_execute($stmt)) {
 echo "Artwork added successfully!";
@@ -46,6 +53,14 @@ mysqli_stmt_close($stmt);
 
   <label>Description:</label>
   <textarea name="description"></textarea>
+  <br>
+
+  <label>Price:</label>
+  <input type="number" name="price" required>
+  <br>
+
+  <label>Unit Available:</label>
+  <input type="number" name="unit" required>
   <br>
 
   <label>Image:</label>
