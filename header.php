@@ -26,6 +26,8 @@
             
           echo '<li><a href="artwork.php">Artwork</a></li>';
           echo '<li><a href="' . $userURL . '">' . $username . '</a></li>';
+          echo '<li><a href="cart.php">My Cart</a></li>';
+
           echo '<li><a href="partials/logout.php">Log Out</a></li>';
         } else {
           echo '<li><a href="about.php">About Us</a></li>';

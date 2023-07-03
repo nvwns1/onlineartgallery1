@@ -404,3 +404,17 @@ nav li:last-child {
   text-decoration-color: #eee;
 
 }
+
+.my-cart-line{
+  justify-content: space-between;
+}
+.my-cart-element{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.my-cart-element h4 {
+  margin-right: 20px; /* Adjust the value to create the desired padding */
+} 
