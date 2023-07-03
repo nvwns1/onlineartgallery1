@@ -125,6 +125,7 @@ if ($_SESSION['username'] != 'admin') {
         </div>
         <nav>
             <ul>
+            <li><a href="adminorder.php">order</a></li>
                 <li>
                     <a href="allArtist.php">All artist</a>
                 </li>

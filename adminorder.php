@@ -1,3 +1,7 @@
+
+<?php include"admin.php" ;
+include "./partials/db.php"
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +15,7 @@
     
     // Query to retrieve order items from the database
     $query = "SELECT * FROM orders";
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($conn, $query);
 
     // Check if there are any order items
     if (mysqli_num_rows($result) > 0) {
@@ -28,7 +32,7 @@
     }
     
     // Close the database connection
-    mysqli_close($connection);
+    mysqli_close($conn);
   ?>
 
 </body>
