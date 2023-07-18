@@ -30,11 +30,12 @@ if (mysqli_num_rows($result) > 0) {
             href='deleteArtwork.php?id=$artwork_id'>Delete</a>";
         echo '</div>';
         echo '</div>';
-
     }
     echo '</div>';
 } else {
-    echo 'No Artwork found.';
+    echo "<div class='hero empty'>";
+    echo '<p>No Artwork found.</p>';
+    echo "</div>";
 }
 
     mysqli_close($conn);

@@ -2,7 +2,7 @@
 include "header.php"; 
 include "partials/db.php"?>
 
-
+<title>Online Art Gallery-Artist</title>
 <section class="hero">
   <div class="hero-text">
     <h2>Featured artist.</h2>

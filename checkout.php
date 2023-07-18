@@ -4,7 +4,7 @@ include "./partials/db.php";
 $userId = $_SESSION['id'];
 
 if (isset($_POST['order'])) {
-    $status = "Ordered";
+    $status = "pending";
     $address = $_POST['address'];
     $order_date = date("Y-m-d H:i:s");
     $payment_method = "cod";
@@ -31,12 +31,14 @@ if (isset($_POST['order'])) {
                 'price' => $row['price'],
                 'quantity' => $quantity
             ];
+            
 
             $sub_total = ($row['price'] * $quantity);
             $cart_total += $sub_total;
         }
     }
 
+    if(!empty($cart_products)){
     // Insert order into the `orders` table
     mysqli_query($conn, "INSERT INTO `orders`(`user_id`, `order_date`, `total_amount`, `status`, `shipping_address`, `payment_method`)
         VALUES ('$userId','$order_date','$cart_total','$status','$address','$payment_method')") or die('query failed');
@@ -70,7 +72,25 @@ if (isset($_POST['order'])) {
     $total_products = implode(', ', array_column($cart_products, 'artwork_id'));
     echo "Total Products: " . $total_products;
 
-    echo "<script>alert('Order placed successfully');</script>";
+    echo "<script>
+    Swal.fire({
+        title: 'Order placed',
+        text: 'The order has been successfully placed.',
+        icon: 'success',  
+        confirmButtonText: 'OK'
+      });
+    
+    </script>";
+}else{
+    echo "<script>
+        Swal.fire({
+            title: 'Cart is empty',
+            text: 'Cannot place an order with an empty cart.',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+        });
+        </script>";
+}
 }
 ?>
 

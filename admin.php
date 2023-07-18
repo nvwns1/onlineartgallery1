@@ -75,32 +75,27 @@ if ($_SESSION['username'] != 'admin') {
             display: flex;
             gap: 10px;
         }
-
         .edit-link {
             padding: 5px 10px;
             background-color: #eee;
             text-decoration: none;
             color: #333;
         }
-
         .delete-msg {
             margin-bottom: 10px;
             color: green;
             background-color: red;
         }
-
         .delete-link {
             padding: 5px 10px;
             background-color: red;
             text-decoration: none;
             color: #fff;
         }
-
         .artwork-link {
             text-decoration: none;
             color: blue;
         }
-
         a.button {
             display: inline-block;
             padding: 10px 20px;
@@ -111,13 +106,11 @@ if ($_SESSION['username'] != 'admin') {
             border-radius: 4px;
             cursor: pointer;
         }
-
         a.button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -125,13 +118,10 @@ if ($_SESSION['username'] != 'admin') {
         </div>
         <nav>
             <ul>
-            <li><a href="adminorder.php">order</a></li>
-                <li>
-                    <a href="allArtist.php">All artist</a>
-                </li>
-                <li>
+                <li><a href="orderAdminAll.php">Order</a></li>
+                <li><a href="allArtist.php">All artist</a></li>
                 <li><a href="allArtwork.php">All artwork</a></li>
-                <a href="partials/logout.php">Log Out</a></li>
+                <li><a href="partials/logout.php">Log Out</a></li>
             </ul>
         </nav>
     </header>

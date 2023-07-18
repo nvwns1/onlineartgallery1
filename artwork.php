@@ -1,8 +1,6 @@
 <?php include 'header.php';
-
-
-
 ?>
+  <title>Online Art Gallery-Artwork</title>
 <section class="hero">
     <div class="hero-text">
         <h2>Expressive Creation</h2>

@@ -51,6 +51,7 @@ include "header.php";
 
 ?>
 <head>
+<title>Online Art Gallery-Login</title>
   <style>
     footer{
       position: fixed;
@@ -60,12 +61,11 @@ include "header.php";
 </head>
 <body>
 
-
   <?php if ($empty) {
-    echo "<div></div>";
+    echo "<div class='empty'><p> Please fill up all credentials.</p></div>";
   } ?>
   <?php if (!$login) {
-    echo "<div>Username and Password doesnot match.</div>";
+    echo "<div class='empty'><p style='color: red;'><b>UserName and Password doesnot match. </b></p></div>";
   }
   ?>
 
@@ -80,7 +80,13 @@ include "header.php";
     <br>
     <input type="submit" value="Login" name="submit">
   </form>
-<?php include "footer.php"; ?>
+  <div style="display: flex; align-items: center; justify-content: center;">
+  <p>
+    Don't have an account? <a style="text-decoration: none; color:#0095F6" href="signupForm.php"><b>Sign up</b></a>
+  </p>
+</div>
+
+  <?php include "footer.php"; ?>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

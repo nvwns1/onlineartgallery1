@@ -3,6 +3,7 @@ include 'header.php';
 
 ?>
 <head>
+  <title>Online Art Gallery-About us</title>
   <style>
     footer{
       position: fixed;

@@ -18,7 +18,7 @@
         echo '<div class="artist-container">';
         
         while ($row = mysqli_fetch_assoc($result)) {
-            $id = $row['id'];
+        $id = $row['id'];
         echo '<div class="artist-card">';
         echo '<img src="photo/' . $row['pp'] . '">';
         echo '<h2>' . $row['fname'] . ' ' . $row['lname'] .  '</h2>';
@@ -33,13 +33,13 @@
         href='deleteArtist.php?id=$id'>Delete</a>";
         echo '</div>';
         echo '</div>';
-
     }
     echo '</div>';
 } else {
-    echo 'No artists found.';
+    echo "<div class='hero empty'>";
+    echo '<p>No artists found.</p>';
+    echo "</div>";
 }
-
     mysqli_close($conn);
     ?>
 

@@ -32,6 +32,7 @@ if (!isset($userid)) {
 }
 
 ?>
+<title>Online Art Gallery</title>
 <main>
   <section class="hero">
     <div class="hero-text">

@@ -59,7 +59,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Signup</title>
+  <title>Online Art Gallery-Signup</title>
   <style>
     footer{
       position: fixed;
@@ -91,6 +91,11 @@
     <br>
     <input type="submit" value="Sign Up">
   </form>
+  <div style="display: flex; align-items: center; justify-content: center;">
+  <p>
+    Have an account? <a style="text-decoration: none; color:#0095F6" href="login.php"><b>Login</b></a>
+  </p>
+</div>
 
   <?php include "footer.php"; ?>
 
