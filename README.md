@@ -11,8 +11,10 @@ Online Art Gallery :framed_picture: is a web-based application using PHP for sho
 - Artwork Display: Artwork is showcased on the platform with details such as artist name, title and description
 - Artwork Details: Users can view detailed information about individual artworks including larger images, artist details and additional artwork-related information
 
+
 ## Note
-> **Note:** This README file will be updated and further modifications can be made after the project submission in college. Contributions are welcome and appreciated to enhance the project even after the initial submission.
+> **Note:** This README file has been updated to include the newly added cart and order functionalities. Further modifications can be made. Contributions are welcome and appreciated to enhance the project.
+
 
 ## Installation
 
@@ -20,8 +22,8 @@ Online Art Gallery :framed_picture: is a web-based application using PHP for sho
 git clone https://github.com/nvwns1/online-art-gallery.git
 
 ### Step 2: Configure the database:
-- Create a new database in your MYSQL server
-- Import the SQL file included i the repository ('database.sql')
+- Create a new database (oag) in your MYSQL server
+- Import the SQL file included in the repository ('oag.sql')
 - [Additional Step: Update the configuration file with your database]
 
 ### Launch the application:
