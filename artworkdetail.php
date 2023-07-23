@@ -197,7 +197,12 @@ if (isset($_POST['add_to_cart'])) {
       ) {
       ?>
         <h5>This is yours design.</h5>
-      <?php } else { ?>
+      <?php } else { 
+        if($row['units_available']==0){
+          echo '<div class="sold"><p>Completely Sold</p></div>';
+          
+        }else{
+        ?>
         <form action="" method="post">
           <label for="quantity">Quantity (between 1 and
             <?php echo $row['units_available']; ?>):
@@ -227,7 +232,7 @@ if (isset($_POST['add_to_cart'])) {
             </p>
           </div>
         </div>
-      <?php } ?>
+      <?php }} ?>
 
     </div>
     <div class="about-image">

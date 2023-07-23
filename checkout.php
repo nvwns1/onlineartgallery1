@@ -61,16 +61,19 @@ if (isset($_POST['order'])) {
 
     // Display the cart products or use them as needed in your code
     foreach ($cart_products as $product) {
+        echo '<div class="artist-card">';
         echo "Artwork ID: " . $product['artwork_id'] . "<br>";
         echo "Title: " . $product['title'] . "<br>";
-        echo "Image Path: " . $product['image_path'] . "<br>";
+        echo "Image: <img src='" . $product['image_path'] . "' alt='Product Image'><br>";
         echo "Price: " . $product['price'] . "<br>";
         echo "Quantity: " . $product['quantity'] . "<br>";
         echo "<br>";
+        echo '</div>';
+
     }
 
-    $total_products = implode(', ', array_column($cart_products, 'artwork_id'));
-    echo "Total Products: " . $total_products;
+    // $total_products = implode(', ', array_column($cart_products, 'artwork_id'));
+    // echo "Total Products: " . $total_products;
 
     echo "<script>
     Swal.fire({
