@@ -43,7 +43,7 @@ if (!isset($userid)) {
       <a href="user.php" class="btn">Explore Profile</a>
     </div>
     <div class="hero-image">
-      <img src="https://i.pinimg.com/564x/37/0f/d6/370fd62bc86ec772653ef85a624f6553.jpg" alt="Artwork">
+      <!-- <img src="https://i.pinimg.com/564x/37/0f/d6/370fd62bc86ec772653ef85a624f6553.jpg" alt="Artwork"> -->
     </div>
   </section>
   <section class="line">

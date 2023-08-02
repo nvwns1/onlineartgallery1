@@ -136,6 +136,9 @@ nav a:hover {
   object-fit: contain;
 }
 
+
+
+
 @media screen and (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -158,6 +161,8 @@ nav a:hover {
     margin-bottom: 10px;
   }
 }
+
+
 
 /* about */
 .page-image img {
@@ -197,10 +202,10 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
-.artist-container {
+/* .artist-container {
   display: flex;
   justify-content: space-between;
-}
+} */
 
 .artist {
   flex-basis: 30%;
@@ -327,6 +332,21 @@ footer {
   text-align: center;
   font-size: 14px;
 }
+
+@media (max-width: 1180px) {
+  .artist-card {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+/* For mobile-size screens (one column) */
+@media (max-width: 835px) {
+  .artist-card {
+    flex-basis: calc(100% - 20px);
+    /* margin: 0 20px; */
+  }
+}
+
 /**/
 .profile-container {
   margin: 20px;

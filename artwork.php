@@ -26,6 +26,7 @@
         echo '<div class="artist-card" onclick="redirectToArtworkDetail(\'artworkdetail.php?id=' . $artworkId . '\')">';
         echo '<img src=' . $row['image_path'] . ' height="500px" width= "500px" >';
         echo '<h2>'. $row['title'];
+        // echo '<p>Price: Rs. '. $row['price'].'</p>';
 
         echo '</div>';
     }

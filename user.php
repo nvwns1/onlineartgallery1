@@ -47,6 +47,8 @@ if (!isset($pp)) {
       <a href="edit_artist.php?id= <?php echo $id ?>" class="profile-link">Edit Profile</a> 
       <br>
       <a href="./addArtwork.php" class="profile-link">Add Artwork</a> 
+      <a href="./manageorderUser.php" class="profile-link">Order Dashboard</a> 
+
     </div>
   </div>
 </div>
@@ -71,8 +73,11 @@ if (!isset($pp)) {
           echo '<div class="artist-card">';
           echo '<img src="'.$row['image_path']  .'"  onclick=
           "redirectToArtworkDetail(\'artworkdetail.php?id='.$id.'\')" alt="Artwork 1">';
+          
           echo '<h2>'.$row['title'].'</h2>';
-          echo '<div class="link-container">';
+          echo '<p>Units Available: '.$row['units_available'].'</p>';
+         
+          echo '<br><div class="link-container"> ';
         echo '<a class="edit-link" href="edit_artwork.php?id='.$id.'">Edit';
        echo "<a class='delete-link' onclick=\"return confirm(
         'Are you sure to delete?')\" 
@@ -92,7 +97,8 @@ if (!isset($pp)) {
     window.location.href = url;
   }
 </script>
-<?php include "footer.php"; ?>
+<?php 
+// include "footer.php"; ?>
 </body>
 
 </html>

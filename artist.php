@@ -32,7 +32,6 @@ include "partials/db.php"?>
   }
 
   ?>
-  <br>
 </div>
 
 

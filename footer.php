@@ -2,7 +2,7 @@
       <p>&copy; 2023 Art Gallery. All rights reserved.</p>
     </footer>
 
-    <script>
+    <!-- <script>
       window.addEventListener('scroll', function() {
   // Get the height of the content and the viewport
   const contentHeight = document.querySelector('.content').offsetHeight;
@@ -23,5 +23,5 @@
   }
 });
 
-    </script>
+    </script> -->
 </html>

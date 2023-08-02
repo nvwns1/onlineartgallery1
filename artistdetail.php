@@ -7,7 +7,7 @@ from users left join artworks on users.id = artworks.artist_id
 WHERE users.id = $id;
 ";
 $result = mysqli_query($conn, $q);
-$row = mysqli_fetch_assoc($result);
+$userInfo = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,23 +21,29 @@ $row = mysqli_fetch_assoc($result);
 <body>
 <section class="hero">
         <div class="hero-text">
-          <h2><?php echo $row['fname'].' '.$row['lname']?></h2>
+          <h2><?php echo $userInfo['fname'].' '.$userInfo['lname']?></h2>
         </div>
         <div class="about-image">
-          <img src="<?php echo 'photo/'. $row['pp'] ?>" height='500px' alt="about">
+          <img src="<?php echo 'photo/'. $userInfo['pp'] ?>" height='500px' alt="about">
         </div>
       </section>
  
       <section class="line">
-        <h2><?php echo $row['fname']?>'s Gallery</h2>
+        <h2><?php echo $userInfo['fname']?>'s Gallery</h2>
       </section>
 <div class="artist-container">
     <?php
+        mysqli_data_seek($result, 0);
     while ($row = mysqli_fetch_assoc($result)) {
         $artworkId = $row['artwork_id'];
-        echo '<div class="artist-card" onclick="redirectToArtworkDetail(\'artworkdetail.php?id=' . $artworkId . '\')">';
+        if($artworkId){
+          echo '<div class="artist-card" onclick="redirectToArtworkDetail(\'artworkdetail.php?id=' . $artworkId . '\')">';
         echo '<img src=' . $row['image_path'].'>';
         echo '<h2>' . $row['title'].'</h2>';
+        }else{
+          echo '<div class="hero"><h1>Gallery Empty</h1><div>';
+        }
+        
         echo '</div>';
     } 
     ?>
