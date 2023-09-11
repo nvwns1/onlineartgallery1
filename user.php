@@ -30,75 +30,96 @@ if (!isset($pp)) {
 
 <body>
 
-<div class="profile-container">
-  <div class="artist-bio">
-    <div class="artist-image">
-      <img src="./photo/<?php echo $pp ?>" alt="Artist Name">
-    </div>
-    <div class="artist-info">
-      <h2 class="artist-name"><?php echo "$fname" . " " . "$lname"; ?></h2>
-      <h2 class="artist-name"><?php echo "$email"; ?></h2>
+  <div class="profile-container">
+    <div class="artist-bio">
+      <div class="artist-image">
+        <img src="./photo/<?php echo $pp ?>" alt="Artist Photo">
+      </div>
+      <div class="artist-info">
+        <h2 class="artist-name"><?php echo "$fname" . " " . "$lname"; ?></h2>
+        <h2 class="artist-name"><?php echo "$email"; ?></h2>
 
-      <form class="a" method="POST" action="ppupload.php" enctype="multipart/form-data">
-        <input type="file" name="profilePicture">
-        <input type="submit" value="Change Profile Picture">
-      </form>
-      <br>
-      <a href="edit_artist.php?id= <?php echo $id ?>" class="profile-link">Edit Profile</a> 
-      <br>
-      <a href="./addArtwork.php" class="profile-link">Add Artwork</a> 
-      <a href="./manageorderUser.php" class="profile-link">Order Dashboard</a> 
+        <form class="a" method="POST" action="ppupload.php" id="form" enctype="multipart/form-data">
+          <input type="file" name="profilePicture">
+          <input type="submit" value="Change Profile Picture">
+        </form>
+        <br>
+        <a href="edit_artist.php?id= <?php echo $id ?>" class="profile-link">Edit Profile</a>
+        <br>
+        <a href="./addArtwork.php" class="profile-link">Add Artwork</a>
+        <a href="./manageorderUser.php" class="profile-link">Order Dashboard</a>
 
+      </div>
     </div>
   </div>
-</div>
+  <script>
+    const imageForm = document.getElementById('form');
+
+    imageForm.addEventListener('submit', function(event) {
+      const fileInput = document.querySelector('input[type="file"]');
+      const selectedFile = fileInput.files[0];
+
+      if (!isValidFileType(selectedFile)) {
+        event.preventDefault();
+        alert('Invalid file type. Please select a .jpg, .png, or .jpeg file.');
+      }
+    });
+
+    function isValidFileType(file) {
+      const allowedExtensions = ['.jpg', '.png', '.jpeg'];
+      const fileName = file.name;
+      const fileExtension = fileName.slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2);
+
+      return allowedExtensions.includes('.' + fileExtension.toLowerCase());
+    }
+  </script>
 
 
 
-    <section class="line">
+  <section class="line">
     <h2>Gallery</h2>
-    </section>
+  </section>
 
 
-    <div class="artist-container">
+  <div class="artist-container">
 
-      <?php
-      $query = "Select * FROM artworks WHERE artist_id = $id";
-      $result = mysqli_query($conn, $query);
-      if ($result  && mysqli_num_rows($result) > 0) {
+    <?php
+    $query = "Select * FROM artworks WHERE artist_id = $id";
+    $result = mysqli_query($conn, $query);
+    if ($result  && mysqli_num_rows($result) > 0) {
 
-        while ($row = mysqli_fetch_assoc($result)) {
-          $id=$row['artwork_id'];
-          $uname = $_SESSION['username'];
-          echo '<div class="artist-card">';
-          echo '<img src="'.$row['image_path']  .'"  onclick=
-          "redirectToArtworkDetail(\'artworkdetail.php?id='.$id.'\')" alt="Artwork 1">';
-          
-          echo '<h2>'.$row['title'].'</h2>';
-          echo '<p>Units Available: '.$row['units_available'].'</p>';
-         
-          echo '<br><div class="link-container"> ';
-        echo '<a class="edit-link" href="edit_artwork.php?id='.$id.'">Edit';
-       echo "<a class='delete-link' onclick=\"return confirm(
+      while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['artwork_id'];
+        $uname = $_SESSION['username'];
+        echo '<div class="artist-card">';
+        echo '<img src="' . $row['image_path']  . '"  onclick=
+          "redirectToArtworkDetail(\'artworkdetail.php?id=' . $id . '\')" alt="Artwork 1">';
+
+        echo '<h2>' . $row['title'] . '</h2>';
+        echo '<p>Units Available: ' . $row['units_available'] . '</p>';
+
+        echo '<br><div class="link-container"> ';
+        echo '<a class="edit-link" href="edit_artwork.php?id=' . $id . '">Edit';
+        echo "<a class='delete-link' onclick=\"return confirm(
         'Are you sure to delete?')\" 
         href='deleteArtworkbyuser.php?id=$id'>Delete</a>";
         echo '</div>';
-          echo "</div>";
-        }
-
+        echo "</div>";
       }
-      ?>
+    }
+    ?>
 
-    </div>
+  </div>
 
 
   <script>
-  function redirectToArtworkDetail(url) {
-    window.location.href = url;
-  }
-</script>
-<?php 
-// include "footer.php"; ?>
+    function redirectToArtworkDetail(url) {
+      window.location.href = url;
+    }
+  </script>
+  <?php
+  // include "footer.php"; 
+  ?>
 </body>
 
 </html>

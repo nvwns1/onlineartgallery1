@@ -45,7 +45,7 @@ mysqli_stmt_close($stmt);
 }
 ?>
 
-<form method="POST" action="#" enctype="multipart/form-data">
+<form method="POST" action="#" enctype="multipart/form-data" id="form">
   <label>Title:</label>
   <input type="text" name="title" required>
   <br>
@@ -64,9 +64,32 @@ mysqli_stmt_close($stmt);
   <br>
 
   <label>Image:</label>
-  <input type="file" name="image" accept="image/*" required>
+  <input type="file" name="image" accept=".jpg, .png, .jpeg" required>
   <br>
   <br>
 
   <input type="submit" value="Add Artwork">
 </form>
+
+<script>
+  const imageForm = document.getElementById('form');
+
+imageForm.addEventListener('submit', function(event) {
+  const fileInput = document.querySelector('input[type="file"]');
+  const selectedFile = fileInput.files[0];
+
+  if (!isValidFileType(selectedFile)) {
+    event.preventDefault();
+    alert('Invalid file type. Please select a .jpg, .png, or .jpeg file.');
+  }
+});
+
+function isValidFileType(file) {
+  const allowedExtensions = ['.jpg', '.png', '.jpeg'];
+  const fileName = file.name;
+  const fileExtension = fileName.slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2);
+
+  return allowedExtensions.includes('.' + fileExtension.toLowerCase());
+}
+
+</script>

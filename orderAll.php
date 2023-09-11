@@ -29,7 +29,7 @@ if (mysqli_num_rows($result) > 0) {
         '</p>';
         echo '<h4>' . "Total Amount: " . $total_amount .  '</h4>';
         $items_query = "SELECT artworks.title, artworks.image_path,
-        artworks.price,
+        order_items.price,
         order_items.quantity FROM order_items
         INNER JOIN artworks ON order_items.artwork_id = artworks.artwork_id
         WHERE order_items.order_id = $order_id
@@ -51,7 +51,7 @@ if (mysqli_num_rows($result) > 0) {
                 echo '<img src="' . $image_path . '">';
                 echo '<p>' . "Price: " . $artwork_price .  '</p>';
                 echo '<p>' . "Quantity: " . $quantity .  '</p>';
-                echo '<h4>' . "Total Price: " . $artwork_price * $quantity .  '</h4>';
+                echo '<h4>' . "Ordered Price: " . $artwork_price * $quantity .  '</h4>';
                 echo "<br>";
                 echo "</div>";
             }

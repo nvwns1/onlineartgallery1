@@ -13,7 +13,7 @@ WHERE  status='canceled'";
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-    echo "<div class = 'big-container' >";
+        echo "<div class = 'big-container' >";
         $order_id = $row['order_id'];
         $order_date = $row['order_date'];
         $total_amount = $row['total_amount'];
@@ -24,17 +24,17 @@ if (mysqli_num_rows($result) > 0) {
         echo "Order ID: " . $order_id . "<br>";
         echo '<p> 
         Order Date: ' . $order_date .   '</br>' .
-            'Status: ' . $status . '<br>'.
-        'Shipping Address: ' . $shipping_address . '<br>'.
-        'Payment Method: ' . $payment_method . '<br>'.
-        '</p>';
+            'Status: ' . $status . '<br>' .
+            'Shipping Address: ' . $shipping_address . '<br>' .
+            'Payment Method: ' . $payment_method . '<br>' .
+            '</p>';
 
-    
+
         echo '<h4>' . "Total Amount: " . $total_amount .  '</h4>';
 
 
         $items_query = "SELECT artworks.title, artworks.image_path,
-        artworks.price,
+        order_items.price,
         order_items.quantity FROM order_items
         INNER JOIN artworks ON order_items.artwork_id = artworks.artwork_id
         WHERE order_items.order_id = $order_id
@@ -52,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
                 $artwork_price = $item_row['price'];
                 echo '<h2>' . $title .  '</h2>';
                 echo '<img src="' . $image_path . '">';
-                echo '<p>' . "Price: " . $artwork_price .  '</p>';
+                echo '<p>' . "Ordered Price: " . $artwork_price .  '</p>';
                 echo '<p>' . "Quantity: " . $quantity .  '</p>';
                 echo '<h4>' . "Total Price: " . $artwork_price * $quantity .  '</h4>';
                 echo "<br>";
@@ -67,5 +67,3 @@ if (mysqli_num_rows($result) > 0) {
     echo '<h2>No Canceled orders found.</h2>';
     echo '</div>';
 }
-
-?>

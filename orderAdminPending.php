@@ -56,7 +56,7 @@ if (mysqli_num_rows($result) > 0) {
 
 
         $items_query = "SELECT artworks.artwork_id, artworks.title, artworks.image_path,
-        artworks.price,artworks.units_available,
+        order_items.price,artworks.units_available,
         order_items.quantity FROM order_items
         INNER JOIN artworks ON order_items.artwork_id = artworks.artwork_id
         WHERE order_items.order_id = $order_id
@@ -76,7 +76,7 @@ if (mysqli_num_rows($result) > 0) {
                 $total_quantity =$item_row['units_available'];
                 echo '<h2>' . $title .  '</h2>';
                 echo '<img src="' . $image_path . '">';
-                echo '<p>' . "Price: " . $artwork_price .  '</p>';
+                echo '<p>' . "Ordered Price: " . $artwork_price .  '</p>';
                 echo '<p>' . "Quantity: " . $quantity .  '</p>';
                 echo '<p>' . "Units Available: " . $total_quantity .  '</p>';
 

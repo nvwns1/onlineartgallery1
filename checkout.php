@@ -51,9 +51,10 @@ if (isset($_POST['order'])) {
     foreach ($cart_products as $product) {
         $artwork_id = $product['artwork_id'];
         $quantity = $product['quantity'];
+        $order_price = $product['price'];
 
-        mysqli_query($conn, "INSERT INTO `order_items`(`order_id`, `artwork_id`, `quantity`)
-            VALUES ('$order_id','$artwork_id','$quantity')") or die('query failed');
+        mysqli_query($conn, "INSERT INTO `order_items`(`order_id`, `artwork_id`, `quantity`, `price`)
+            VALUES ('$order_id','$artwork_id','$quantity', '$order_price')") or die('query failed');
     }
 
     // Delete cart items from the `cart` table
